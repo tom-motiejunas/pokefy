@@ -13,7 +13,6 @@ interface Props {}
 
 export const PokeContainer: React.FC<Props> = () => {
   const searchData = useContext(SearchDataContext);
-
   if (!searchData) return null;
 
   return (

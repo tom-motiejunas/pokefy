@@ -7,10 +7,8 @@ import { PokeContainer } from "./components/poke-container/poke-container";
 
 import { SearchDataContext } from "./contexts/search-data.context";
 
-import { data } from "./tempData";
-
 function App() {
-  const [searchData, setSearchData] = useState(data);
+  const [searchData, setSearchData] = useState(null);
 
   return (
     <div className="App">

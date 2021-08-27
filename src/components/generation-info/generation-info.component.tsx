@@ -5,6 +5,7 @@ import "./generation-info.style.scss";
 
 export const GenerationInfo: React.FC = () => {
   const searchData = useContext(SearchDataContext);
+  if (!searchData) return null;
   const gameIndices = searchData.game_indices;
 
   return (

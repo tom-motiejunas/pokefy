@@ -65,3 +65,9 @@ span {
     }
   }
 }
+@media (max-width: 840px) {
+  .info-card {
+    margin: auto;
+    width: auto;
+  }
+}

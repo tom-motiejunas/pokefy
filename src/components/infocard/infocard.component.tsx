@@ -5,30 +5,30 @@ import "./infocard.style.scss";
 
 export default function InfoCard() {
   const searchData = useContext(SearchDataContext);
-
+  if (!searchData) return null;
   return (
     <section className="info-card">
       <header>
         <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${searchData.id}.png`}
           alt="pokemon-pic"
         />
         <div className="header-info">
           <div>
             <h3>Name:</h3>
-            <span>Ditto</span>
+            <span>{searchData.name}</span>
           </div>
           <div>
             <h3>Id:</h3>
-            <span>132</span>
+            <span>{searchData.id}</span>
           </div>
           <div>
             <h3>Height:</h3>
-            <span>3</span>
+            <span>{searchData.height}</span>
           </div>
           <div>
             <h3>Weight:</h3>
-            <span>60</span>
+            <span>{searchData.weight}</span>
           </div>
         </div>
       </header>
@@ -36,15 +36,17 @@ export default function InfoCard() {
         <div>
           <h3>Types: </h3>
           <p>
-            <span>Electric</span>
-            <span>Electric</span>
+            {searchData.types.map((el) => {
+              return <span>{el.type.name}</span>;
+            })}
           </p>
         </div>
         <div>
           <h3>Abilities:</h3>
           <p>
-            <span>Static</span>
-            <span>Lighting Rod</span>
+            {searchData.abilities.map((el) => {
+              return <span>{el.ability.name}</span>;
+            })}
           </p>
         </div>
       </div>

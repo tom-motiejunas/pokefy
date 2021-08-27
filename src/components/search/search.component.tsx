@@ -7,8 +7,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { fetchData } from "../../fetch";
 
-import { data } from "../../tempData"; // Delete after finished project
-
 interface Props {
   setData: React.Dispatch<React.SetStateAction<any>>;
 }
@@ -25,9 +23,7 @@ export const Search: React.FC<Props> = ({ setData }) => {
   ) {
     if (!result) return;
 
-    //getData("https://pokeapi.co/api/v2/pokemon/ditto", setData);
-
-    setData(data);
+    getData(`https://pokeapi.co/api/v2/pokemon/${result.value}`, setData);
 
     if (container) {
       container.classList.add("shrink");

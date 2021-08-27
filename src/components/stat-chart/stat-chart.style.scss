@@ -3,4 +3,12 @@
   background-color: #fff;
   margin-left: 2rem;
   height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 840px) {
+  .stat-chart-container {
+    margin: 0;
+  }
 }

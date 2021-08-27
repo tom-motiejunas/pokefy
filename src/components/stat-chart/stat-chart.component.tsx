@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import "./stat-chart.style.scss";
 
@@ -10,8 +10,9 @@ interface objectArr {
 }
 
 export const StatChart: React.FC = () => {
-  const pokemonStats = useContext(SearchDataContext).stats;
-
+  const pokemonData = useContext(SearchDataContext);
+  const pokemonStats = pokemonData?.stats;
+  if (!pokemonStats) return null;
   // loop through pokemon stats and fill up all posible stat names
   let data: objectArr = {};
   const domains = pokemonStats.map((el) => {
@@ -24,6 +25,11 @@ export const StatChart: React.FC = () => {
       <RadarChart
         data={[data]}
         domains={domains}
+        height={350}
+        width={300}
+        margin={{ top: 50, right: 20, left: 20, bottom: 50 }}
+        startingAngle={1.58}
+        hideInnerMostValues={true}
         style={{
           axes: {
             line: {},
@@ -39,8 +45,6 @@ export const StatChart: React.FC = () => {
             fillOpacity: 0.1,
           },
         }}
-        height={450}
-        width={400}
       />
     </section>
   );

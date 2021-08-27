@@ -1,11 +1,101 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 
-import { evolutionData } from "../../tempData2";
+import { SearchDataContext } from "../../contexts/search-data.context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 import "./evolution-chart.style.scss";
+import { fetchData } from "../../fetch";
+
+interface pokemonSpeciesInt {
+  id: number;
+  name: string;
+  order: number;
+  gender_rate: number;
+  capture_rate: number;
+  base_happiness: number;
+  is_baby: boolean;
+  is_legendary: boolean;
+  is_mythical: boolean;
+  hatch_counter: boolean;
+  has_gender_differences: boolean;
+  forms_switchable: boolean;
+  growth_rate: {
+    name: string;
+    url: string;
+  };
+  pokedex_numbers: {
+    entry_number: number;
+    pokedex: {
+      name: string;
+      url: string;
+    };
+  }[];
+  egg_groups: {
+    name: string;
+    url: string;
+  }[];
+  color: {
+    name: string;
+    url: string;
+  };
+  shape: {
+    name: string;
+    url: string;
+  };
+  evolves_from_species: {
+    name: string;
+    url: string;
+  };
+  evolution_chain: {
+    url: string;
+  };
+  habitat?: null | string;
+  generation: {
+    name: string;
+    url: string;
+  };
+  names: {
+    name: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }[];
+  flavor_text_entries: {
+    flavor_text: string;
+    language: {
+      name: string;
+      url: string;
+    };
+    version: {
+      name: string;
+      url: string;
+    };
+  }[];
+  form_descriptions: {
+    description: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }[];
+  genera: {
+    genus: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }[];
+  varieties: {
+    is_default: boolean;
+    pokemon: {
+      name: string;
+      url: string;
+    };
+  }[];
+}
 
 interface evolDetailsInt {
   gender: null | number;
@@ -44,6 +134,13 @@ interface evolutionInt {
   species: speciesInt;
 }
 [];
+
+interface evolutionData {
+  type: evolutionData;
+  id: number;
+  baby_trigger_item?: null;
+  chain: evolutionInt;
+}
 
 // Recursion function to show evolution possibilities of pokemon
 
@@ -99,7 +196,39 @@ function addElement(chain: evolutionInt) {
 // chain -> evolves_to -> 0 ->
 
 export const EvolutionChart: React.FC = () => {
-  const chain = evolutionData.chain;
+  const [evolutionData, setEvolutionData] = useState<evolutionInt | undefined>(
+    undefined
+  );
+
+  function isFoo(object: any): object is pokemonSpeciesInt {
+    return "evolution_chain" in object;
+  }
+  function isBoo(object: any): object is evolutionData {
+    return "chain" in object;
+  }
+
+  async function getData(data: typeof searchData) {
+    const pokemonSpecies = await fetchData(
+      `https://pokeapi.co/api/v2/pokemon-species/${data?.name}/`
+    );
+    if (!pokemonSpecies) return;
+
+    if (isFoo(pokemonSpecies)) {
+      const evolutionData = await fetchData(pokemonSpecies.evolution_chain.url);
+      if (!evolutionData) return;
+      if (isBoo(evolutionData)) {
+        setEvolutionData(evolutionData.chain);
+      }
+    }
+  }
+
+  // getData()
+  const searchData = useContext(SearchDataContext);
+  useEffect(() => {
+    getData(searchData);
+  }, []);
+  if (!evolutionData) return null;
+  const chain = evolutionData;
 
   return (
     <section className="chart-container">

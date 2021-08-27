@@ -10,11 +10,19 @@
     $fourth-color
   );
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-columns: repeat(auto-fit, 1fr);
   grid-template-areas:
     "info-card gen gen gen gen"
-    "evol evol evol str str";
+    "evol evol evol evol str";
   row-gap: 3rem;
   padding: 2rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 840px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
