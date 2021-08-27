@@ -1,0 +1,9 @@
+@import "index.scss";
+
+.App {
+  background-image: linear-gradient(
+    to bottom right,
+    $first-color,
+    $third-color
+  );
+}

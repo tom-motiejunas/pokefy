@@ -1,0 +1,20 @@
+@import "../../index.scss";
+
+.main-container {
+  transition: all 1s ease;
+  z-index: 10;
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    $second-color,
+    $fourth-color
+  );
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas:
+    "info-card gen gen gen gen"
+    "evol evol evol str str";
+  row-gap: 3rem;
+  padding: 2rem;
+}

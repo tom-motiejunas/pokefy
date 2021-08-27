@@ -1,0 +1,52 @@
+@import "../../index.scss";
+
+.search-container {
+  height: 100vh;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  position: relative;
+  transition: all 1s ease;
+
+  svg {
+    font-size: 1rem;
+    color: $fifth-color;
+  }
+  input {
+    border: none;
+    width: 150px;
+    height: 35px;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 15px;
+    transition: all 0.5s ease-in-out;
+  }
+  input:focus {
+    transition-delay: 0;
+    outline: 1px solid $third-color;
+    width: 300px;
+    ~ button {
+      transform: rotateZ(360deg);
+      right: 5px;
+    }
+  }
+  button {
+    background-image: none;
+    position: absolute;
+    background: $fourth-color;
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    right: 80px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+  }
+}
+
+.shrink {
+  height: 0;
+  opacity: 0;
+}

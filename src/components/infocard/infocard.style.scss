@@ -1,0 +1,67 @@
+@import "../../index.scss";
+
+h3 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-align: end;
+  width: 68px;
+}
+span {
+  font-weight: 400;
+  text-align: start;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  grid-area: info-card;
+  margin-right: 2rem;
+  width: 320px;
+  height: 350px;
+  background-color: #fff;
+  header {
+    display: flex;
+    padding: 1rem 1rem 0.8rem 1rem;
+    img {
+      height: 96px;
+    }
+    width: 100%;
+  }
+  > .types-abilities {
+    display: flex;
+    flex-direction: column;
+    div {
+      display: flex;
+      padding: 0 0 1rem 1rem;
+      p {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+    h3 {
+      width: 78px;
+      padding-top: 0.5rem;
+    }
+    span {
+      background-color: $electric;
+      color: #fff;
+      text-shadow: 1px 1px #000;
+      margin: 0.5rem;
+      padding: 0.2rem;
+      border-radius: 10px;
+    }
+  }
+}
+.header-info {
+  div {
+    display: flex;
+    align-items: center;
+    margin-top: 0.3rem;
+    h3 {
+      width: 68px;
+    }
+  }
+}

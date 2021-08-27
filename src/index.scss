@@ -1,0 +1,43 @@
+$first-color: #fbd743;
+$second-color: #ff1f1f;
+$third-color: #5db9ff;
+$fourth-color: #363b81;
+$fifth-color: #fff;
+
+$normal: #a8a878;
+$fire: #f08030;
+$water: #6890f0;
+$grass: #78c850;
+$electric: #f8d030;
+$ice: #98d8d8;
+$ground: #e0c068;
+$flying: #a890f0;
+$poison: #a040a0;
+$fighting: #c03028;
+$psychic: #f85888;
+$dark: #705848;
+$rock: #b8a038;
+$bug: #a8b820;
+$ghost: #705898;
+$steel: #b8b8d0;
+$dragon: #7038f8;
+$fairy: #ffaec9;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
